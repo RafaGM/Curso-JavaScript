@@ -46,3 +46,6 @@ var Profesor = {
 			}
 
 };
+
+console.log(Alumno.Nombre + " " + Alumno.Cursos[1] + " " + Alumno.nombreCompleto);
+console.log(Profesor.Cursos[2] + " " + Profesor.nombreCompleto);
