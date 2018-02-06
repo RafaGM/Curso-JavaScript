@@ -9,7 +9,7 @@
    	<link rel="stylesheet" type="text/css" href="style.css">
 
    	<script src="scripts.js"></script>
-	<script src="package/dist/Chart.js" type="text/javascript"></script>    
+	<script src="package/dist/Chart.js" type="text/javascript"></script> 
 </head>
 
 <body>
@@ -22,10 +22,9 @@
 	<nav id="menuNav">
 		<button id="btnEmpresa" class="btnNav" onclick='contenido("contenidoEmpresa"); activarBoton(this.id);'>Mi empresa</button>
 		<button id="btnClientes" class="btnNav" onclick='contenido("contenidoClientes"); activarBoton(this.id);'>Clientes</button>
-		<button id="btnCobros" class="btnNav" onclick='activarBoton(this.id);'>Cobros</button>
-		<button id="btnPagos" class="btnNav" onclick='activarBoton(this.id);'>Pagos</button>
+		<button id="btnCobros/Pagos" class="btnNav" onclick='contenido("contenidoCobrosPagos");activarBoton(this.id);'>Cobros/Pagos</button>
 		<button id="btnPresupuesto" class="btnNav" onclick='activarBoton(this.id);'>Presupuesto</button>
-		<button id="btnFacturacion" class="btnNav" onclick='contenido("contenidoFacturacion"); activarBoton(this.id);''>Facturación</button>
+		<button id="btnFacturacion" class="btnNav" onclick='activarBoton(this.id);''>Facturación</button>
 	</nav>
 	<section>
 		<div id="grafico1">
@@ -42,7 +41,7 @@
 	</section>
 	<article id="contenidoArticle">
 		<!--Mi empresa-->
-		<div id="contenidoEmpresa" class="contenido" style="display:none">
+		<div id="contenidoEmpresa" class="contenido" >
 			<form class="needs-validation" novalidate>
 			  <div class="form-row">
 			    <div class="col-md-4 mb-3">
@@ -92,17 +91,11 @@
 		</div>	
 		<!--!fin empresa-->	
 		<!-- clientes -->
-		<div id="contenidoClientes" class="contenido" style="display: none">
+		<div id="contenidoClientes" class="contenido" >
 			<div id="clientes">
 				<div class="popup">
 					<ul id="listaClientes">
 						<lh>Nombre Apellidos / Teléfono</lh>
-						<li>
-							<span>
-								test
-								<button onClick='borrarFila(this)'>x</button>
-							</span>
-						</li>
 					</ul>
 				</div>
 			</div>
@@ -117,8 +110,8 @@
 		</div>
 
 		<!--fin clientes-->
-		<!--facturacion-->
-		<div id="contenidoFacturacion" class="contenido" style="display: none">
+		<!---cobros/pagos-->
+		<div id="contenidoCobrosPagos" class="contenido" >
 			<div id="facturacion">
 				<div id="factura">
 					<form>
@@ -154,11 +147,30 @@
 				</div>
 			</div>
 		</div>
+		<!--fin pagos/cobros-->
+		<!--facturacion-->
+		<div id="contenidoFacturacion" class="contenido" style="display: flex;">
+			<nav id="navFact">
+				<button id="" class="btnMenu">Subir Factura</button>
+				<button id="" class="btnMenu">Crear Factura</button>
+				<button id="" class="btnMenu">Editar Factura</button>
+				<button id="" class="btnMenu">Borrar Factura</button>
+			</nav>
+			<div id="facturacion">
+				<div id="formFact"></div>
+				<div id="tablaFact">
+					<table id="tabla">
+						<tr></tr>
+					</table>
+				</div>
+			</div>
+		</div>
 		<!--fin facturacion-->
 	</article>
 	<footer>
 		<div id="fotr"><p id="contact"><strong>Contacto:</strong><br> Felipe Betanourt Felipe@assd.com <br> Rafael Guardeño Rafael@asdda.com</p>
 		</div>
 	</footer>
+		
 </body>
 </html>

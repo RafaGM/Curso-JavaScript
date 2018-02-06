@@ -57,7 +57,16 @@ function addClienteLoad(nombre, telefono) {
 	var lista = document.getElementById("listaClientes");
 	var elementoLista = document.createElement("li");
 	var nombreCliente = document.createTextNode(nombre + " / " + telefono);
-	elementoLista.appendChild(nombreCliente);
+	// boton borrar fila
+	var boton = document.createElement("button");
+	boton.appendChild(document.createTextNode("x"));		
+	boton.style.float = "right";	
+	boton.onclick = function() {borrarFila(this)};
+	//meter en un span nombreCliente y boton
+	var span = document.createElement("span");
+	span.appendChild(nombreCliente);
+	span.appendChild(boton);
+	elementoLista.appendChild(span);
 	lista.appendChild(elementoLista);
 }
 //** fin clientes**/
