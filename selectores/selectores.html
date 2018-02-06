@@ -1,0 +1,35 @@
+<!--
+
+1. Crea una pagina web compuesta por tres divs con dos botones al final.
+2. Crea los estilos CSS necesarios para colorear cada uno de los elementos.
+3. Para ello asignaremos un id al primer div, el cual coloreamos de rojo y una clase a los dos restantes para ponerles un fondo azul.
+4. Ahora aplicaremos estilos JS, para crear algunos efectos al apretar los botones.
+5. Creamos un evento en el primer botón para que cuando apretemos desaparezca el div rojo
+6. Creamos un evento en el segundo botón para que al apretar se escondan todos los elementos azules.
+7. Añade un tercer botón que al pulsarlo elimine todos los divs de nuestra pagina web y después el mismo desaparezca.
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<title>Selectores</title>
+	<link rel="stylesheet" type="text/css" href="selectores.css">
+	<script src="selectores.js"></script>
+
+</head>
+<body id="body">
+	<div id="div1">
+	</div>
+	<div class="divClase">
+	</div>
+	<div class="divClase">
+	</div>
+	<nav>
+		<button onclick='desaparecerRojo("div1");'>Desaparecer rojo</button>
+		<button onclick='esconderAzules("divClase");'>Esconder azules</button>
+		<button onclick='borrarBody();'>Borrar todo</button>
+	</nav>
+</body>
+</html>
