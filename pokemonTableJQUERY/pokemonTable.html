@@ -24,6 +24,9 @@ Os pongo un ejemplo de como tendria que quedar.-->
 			justify-content: center;
 
 		}
+		#trMenu td {
+			border: 0px;
+		}
 	</style>
 </head>
 <body>
@@ -42,13 +45,13 @@ Os pongo un ejemplo de como tendria que quedar.-->
 			<td id="name"></td>
 			<td id="type"></td>
 		</tr>
-		<tr>
-			<td style="border: 0px;"><button id="last">Last</button></td>
-			<td colspan="2" style="border: 0px;">
+		<tr id="trMenu">
+			<td><button id="last">Last</button></td>
+			<td colspan="2">
 				<input id="inputSearch" style="width: 100%" type="text" value = "" name=""></input>
 			</td>
-			<td style="border: 0px;"><button id="search">Search</button></td>
-			<td style="border: 0px;"><button id="next">Next</button></td>
+			<td><button id="search">Search</button></td>
+			<td><button id="next">Next</button></td>
 		</tr>
 	</table>
 
