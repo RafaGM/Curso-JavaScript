@@ -1,0 +1,56 @@
+<!---Crea una table con los campos ID, Normal sprite, Shiny sprite, Name y Type y con la api https://www.pokeapi.co/api/v2/pokemon/549/ tienes que coger estos datos y colocarlos en la table. Tienes que tener en cuenta que algunos campos te pueden llegar "null" y entonces mostrarias "no hay datos" o te los puedes inventar. 
+Además añade botones de siguiente y atrás para ir al pokemon de siguiente/anterior ID (la ID del pokemon de la API que he pasado es 549) y un campo donde podamos escribir una id y clicando en "buscar" se ponga ese pokemon. 
+Aviso que la table puede tardar en cargarse.
+Os pongo un ejemplo de como tendria que quedar.-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pokemonTable</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="pokemonTable.js"></script>
+	<style type="text/css">
+		table{
+			border-collapse:collapse;
+			display: flex;
+			justify-content: center;
+		}
+
+		table td , table th{
+			border:1px solid grey;
+			vertical-align: center;
+		}
+		body {
+			display: flex;
+			justify-content: center;
+
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Normal sprite</th>
+			<th>Shiny sprite</th>
+			<th>Name</th>
+			<th>Type</th>
+		</tr>
+		<tr>
+			<td id="id"></td>
+			<td id="normalSprite"></td>
+			<td id="shinySprite"></td>
+			<td id="name"></td>
+			<td id="type"></td>
+		</tr>
+		<tr>
+			<td style="border: 0px;"><button id="last">Last</button></td>
+			<td colspan="2" style="border: 0px;">
+				<input id="inputSearch" style="width: 100%" type="text" value = "" name=""></input>
+			</td>
+			<td style="border: 0px;"><button id="search">Search</button></td>
+			<td style="border: 0px;"><button id="next">Next</button></td>
+		</tr>
+	</table>
+
+</body>
+</html>
