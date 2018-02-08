@@ -365,6 +365,7 @@ function addProducto(idTable) {
 	var tBody = document.getElementById(idTable).childNodes[1];
 	tBody.appendChild(tr);
 	precioFactura += (+precio);
+	actualizarPrecio();
 
 }
 
@@ -376,11 +377,16 @@ function borrarTr(btn) {
 	precioFactura -= (+precio.childNodes[0].textContent);
 	console.log(precioFactura);
 	tr.parentNode.removeChild(tr);
+	actualizarPrecio();
 
 }
 
 function addEmpresaYProducto(idTableInfo, idTableProductos) {
 	addEmpresa(idTableInfo);
 	addProducto(idTableProductos);
+}
+
+function actualizarPrecio() {
+	document.getElementById("tdPrecioTotal").innerHTML = "Precio Total : " + precioFactura;
 }
 
