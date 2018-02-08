@@ -1,5 +1,6 @@
 
 //chapuza variables globales para guardar datos
+var precioFactura = 0;
 var clientesMap =  new Map();
 var cliente = {nombre: "name1",
 			apellido1: "ape1",
@@ -97,6 +98,7 @@ function loadEmpresa() {
 function borrarFila(btn) {
 	var li = btn.parentNode.parentNode;
 	li.parentNode.removeChild(li);
+
 }
 /***diagrama de barras GASTOS***/
 function drawDiagramaBarras1() {
@@ -317,3 +319,68 @@ function ingresoTest() {
 	
 	
 }
+
+//Añadir Empresa y Productos
+
+function getValueFormEmpresa(i) {	
+	var form = document.getElementById("formEmpresa");
+	var arrayInput = form.getElementsByTagName("input");
+	return arrayInput[i].value;
+
+}
+
+function addEmpresa(idTable) {
+	var hijosTabla = document.getElementById(idTable).childNodes;
+	var hijosTbody = hijosTabla[1].childNodes;
+	var parametroTramposo = 0;
+	for (var i = 0; i < hijosTbody.length; i+=2) {
+		var tr = hijosTbody[i].childNodes;
+		for (var j = 1; j < tr.length; j+=2) {
+			var td = tr[j];
+			parametroTramposo = i+j;
+			if(j == 1) parametroTramposo -= 1;
+			else parametroTramposo -= 2;
+			var value = getValueFormEmpresa(parametroTramposo);			
+			td.innerHTML= "";
+			td.appendChild(document.createTextNode(value));
+		}
+	}
+}
+
+
+function addProducto(idTable) {
+	var producto = document.getElementById("Producto").value;
+	var precio = document.getElementById("Precio").value;
+	var newTdProducto = document.createElement("td");
+	newTdProducto.appendChild(document.createTextNode(producto));
+	var newTdPrecio = document.createElement("td");
+	newTdPrecio.appendChild(document.createTextNode(precio));
+	var tr = document.createElement("tr");
+	var boton = document.createElement("button");
+	boton.onclick = function() {borrarTr(this)};
+	boton.innerHTML= "X";
+	tr.appendChild(newTdProducto);
+	tr.appendChild(newTdPrecio);
+	tr.appendChild(boton);
+	var tBody = document.getElementById(idTable).childNodes[1];
+	tBody.appendChild(tr);
+	precioFactura += (+precio);
+
+}
+
+function borrarTr(btn) {
+	var tr = btn.parentNode;
+	var precio = tr.childNodes[1];
+	console.log(tr);
+	console.log(precio.childNodes[0].textContent);
+	precioFactura -= (+precio.childNodes[0].textContent);
+	console.log(precioFactura);
+	tr.parentNode.removeChild(tr);
+
+}
+
+function addEmpresaYProducto(idTableInfo, idTableProductos) {
+	addEmpresa(idTableInfo);
+	addProducto(idTableProductos);
+}
+

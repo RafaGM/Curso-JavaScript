@@ -24,7 +24,7 @@
 		<button id="btnClientes" class="btnNav" onclick='contenido("contenidoClientes"); activarBoton(this.id);'>Clientes</button>
 		<button id="btnCobros/Pagos" class="btnNav" onclick='contenido("contenidoCobrosPagos");activarBoton(this.id);'>Cobros/Pagos</button>
 		<button id="btnPresupuesto" class="btnNav" onclick='activarBoton(this.id);'>Presupuesto</button>
-		<button id="btnFacturacion" class="btnNav" onclick='activarBoton(this.id);''>Facturación</button>
+		<button id="btnFacturacion" class="btnNav" onclick='contenido("contenidoFacturacion");activarBoton(this.id);''>Facturación</button>
 	</nav>
 	<section>
 		<div id="grafico1">
@@ -112,8 +112,8 @@
 		<!--fin clientes-->
 		<!---cobros/pagos-->
 		<div id="contenidoCobrosPagos" class="contenido" >
-			<div id="facturacion">
-				<div id="factura">
+			<div id="cobrosPagos">
+				<div id="formCobrosPagos">
 					<form>
 						 <div class="form-row">
 						    <div class="col">
@@ -140,7 +140,7 @@
 							   </select>
 						    </div>
 						 </div>
-						 <div id="menuItemsFactura">
+						 <div id="menuItemsCobrosPagos">
 						 	<button class="btnFeo" type="button" onclick='movimiento(document.getElementById("precio").value, document.getElementById("unidades").value, document.getElementById("mes").value, document.getElementById("mov").value)'>Finalizar Movimiento</button>
 						 </div>
 					</form>
@@ -149,7 +149,7 @@
 		</div>
 		<!--fin pagos/cobros-->
 		<!--facturacion-->
-		<div id="contenidoFacturacion" class="contenido" style="display: flex;">
+		<div id="contenidoFacturacion" class="contenido" style="display: flex" >
 			<nav id="navFact">
 				<button id="" class="btnMenu">Subir Factura</button>
 				<button id="" class="btnMenu">Crear Factura</button>
@@ -157,10 +157,74 @@
 				<button id="" class="btnMenu">Borrar Factura</button>
 			</nav>
 			<div id="facturacion">
-				<div id="formFact"></div>
+				<div id="formFact">
+					<form id="formEmpresa" class="needs-validation" novalidate>
+					  	<div class="form-row">
+						    <div class="col">
+						      <label for="Empresa">Empresa</label>
+						      <input type="text" class="form-control" id="Empresa" placeholder="Nombre Empresa" value="" required>
+						      	<div class="valid-tooltip">
+						        	Looks good!
+						    	</div>
+					   		</div>				    
+					    	<div class="col">
+					      		<label for="NIF">NIF</label>
+					        	<input type="text" class="form-control" id="NIF" placeholder="888888888-Z" required>
+					      	</div>
+					    </div>
+					  	<div class="form-row">
+						    <div class="col">
+						    	<label for="Direccion">Dirección</label>
+						      	<input type="text" class="form-control" id="Direccion" placeholder="Calle/Av" required>
+						    </div>
+						    <div class="col">
+						      	<label for="Cliente">Cliente</label>
+						      	<input type="text" class="form-control" id="Cliente" placeholder="Paco Pelaez" required>
+						    </div>
+			  			</div>
+			  			<div class="form-row">
+						    <div class="col">
+						    	<label for="Producto">Producto</label>
+						      	<input type="text" class="form-control" id="Producto" placeholder="Producto 1" required>
+						    </div>
+						    <div class="col">
+						      	<label for="Precio">Precio</label>
+						      	<input type="text" class="form-control" id="Precio" placeholder="Paco Pelaez" required>
+						    </div>
+			  			</div> 
+			  						
+					</form>
+					<div id="divBtnAddProducto" >
+							<button class="btn btn-primary" onclick='addEmpresaYProducto("tablaInfo", "tablaProductos")'>Añadir Producto</button>	
+					</div> 
+					
+			  				
+				</div>
+
 				<div id="tablaFact">
-					<table id="tabla">
-						<tr></tr>
+					<table id="tablaInfo">
+						<tr>	
+							<td id="facturacionNombreEmpresa">Nombre Emp</td>
+							<td id="facturacionNIF">NIF</td>
+						</tr>
+						<tr>
+							<td id="facutracionDireccion">Direccion</td>
+							<td id="facturacionCliente">Cliente</td>
+						</tr>
+						
+					</table>
+					<table id="tablaProductos">
+						<tr>
+							<th>Prod id</th>
+							<th>Precio</th>
+						</tr>
+					</table>
+					<table id="tablaTotal">
+						<tr>
+							<th></th>
+							<th>Precio Total:</th>
+							<th></th>
+						</tr>
 					</table>
 				</div>
 			</div>
@@ -168,7 +232,7 @@
 		<!--fin facturacion-->
 	</article>
 	<footer>
-		<div id="fotr"><p id="contact"><strong>Contacto:</strong><br> Felipe Betanourt Felipe@assd.com <br> Rafael Guardeño Rafael@asdda.com</p>
+		<div id="fotr"><p id="contact"><strong>Contacto:</strong><br> Felipe Betanourt Felipe@assd.com <br>Rafa Guardeño <a href="mailto:rafa.guardeno.marquez@gmail.com" target="_blank">rafa.guardeno.marquez@gmail.com</a></p>
 		</div>
 	</footer>
 		
