@@ -237,7 +237,7 @@ footer {
 #facturacion {
   width: 100%;
   display: flex;
-  border: 2px solid red;
+  //border: 2px solid red;
   margin-top: 10px;
 }
 
@@ -272,5 +272,5 @@ td {
 }
 
 #tablaTotal tr th {
-  width: 33%;
+  width: 50%;
 }

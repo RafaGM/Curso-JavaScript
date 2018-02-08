@@ -7,6 +7,37 @@ var cliente = {nombre: "name1",
 			apellido2: "ape2"};
 var empresa = null;
 
+$(window).on("load", function() {
+	$("#btnEmpresa").on("click", function() {
+		contenido("contenidoEmpresa");
+		activarBoton("btnEmpresa");
+	});
+	$("#btnClientes").on("click", function() {
+		contenido("contenidoClientes");
+		activarBoton("btnClientes");
+	});
+	$("#btnCobrosPagos").on("click", function() {
+		contenido("contenidoCobrosPagos");
+		activarBoton("btnCobrosPagos");
+	});
+	$("#btnFacturacion").on("click", function() {
+		contenido("contenidoFacturacion");
+		activarBoton("btnFacturacion");
+	});
+	$("#guardarEmpresa").on("click", function() {
+		guardarEmpresa(document.getElementById("nombreEmpresa").value + " " + document.getElementById("telefono").value + " " + document.getElementById("ciudad").value + " " + document.getElementById("calle").value + " " + document.getElementById("numero").value + " " + document.getElementById("codigoPostal").value);
+	});
+	$("#btnAddCliente").on("click", function() {
+		addCliente(document.getElementById("clienteInputNombre").value, document.getElementById("clienteInputTelefono").value);
+	});
+	$("#btnFeo").on("click", function() {
+		movimiento(document.getElementById("precio").value, document.getElementById("unidades").value, document.getElementById("mes").value, document.getElementById("mov").value);
+	});
+	$("#btnEmpresaYProducto").on("click", function() {
+		addEmpresaYProducto("tablaInfo", "tablaProductos");
+	});
+
+});
 //boton activo de otro css
 function activarBoton(id) {
 	cambiaBtn(id, "btnActivo");

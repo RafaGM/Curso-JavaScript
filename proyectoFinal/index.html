@@ -8,6 +8,7 @@
    	<link rel="stylesheet" type="text/css" href="clienteStyle.css">	
    	<link rel="stylesheet" type="text/css" href="style.css">
 
+   	<script src="jquery-3.3.1.min.js"></script>
    	<script src="scripts.js"></script>
 	<script src="package/dist/Chart.js" type="text/javascript"></script> 
 </head>
@@ -20,11 +21,11 @@
 		</div>
 	</header>
 	<nav id="menuNav">
-		<button id="btnEmpresa" class="btnNav" onclick='contenido("contenidoEmpresa"); activarBoton(this.id);'>Mi empresa</button>
-		<button id="btnClientes" class="btnNav" onclick='contenido("contenidoClientes"); activarBoton(this.id);'>Clientes</button>
-		<button id="btnCobros/Pagos" class="btnNav" onclick='contenido("contenidoCobrosPagos");activarBoton(this.id);'>Cobros/Pagos</button>
-		<button id="btnPresupuesto" class="btnNav" onclick='activarBoton(this.id);'>Presupuesto</button>
-		<button id="btnFacturacion" class="btnNav" onclick='contenido("contenidoFacturacion");activarBoton(this.id);''>Facturación</button>
+		<button id="btnEmpresa" class="btnNav">Mi empresa</button>
+		<button id="btnClientes" class="btnNav">Clientes</button>
+		<button id="btnCobrosPagos" class="btnNav" >Cobros/Pagos</button>
+		<button id="btnPresupuesto" class="btnNav">Presupuesto</button>
+		<button id="btnFacturacion" class="btnNav">Facturación</button>
 	</nav>
 	<section>
 		<div id="grafico1">
@@ -86,7 +87,7 @@
 			      </div>
 			    </div>
 			  </div>
-			  <button class="btn btn-primary" onclick='guardarEmpresa(document.getElementById("nombreEmpresa").value + " " + document.getElementById("telefono").value + " " + document.getElementById("ciudad").value + " " + document.getElementById("calle").value + " " + document.getElementById("numero").value + " " + document.getElementById("codigoPostal").value)' type="button">Modificar</button>
+			  <button id="guardarEmpresa" class="btn btn-primary" type="button">Modificar</button>
 			</form>
 		</div>	
 		<!--!fin empresa-->	
@@ -101,7 +102,7 @@
 			</div>
 			<aside >
 				<script>cargarClientes();</script>
-				<button class="btnCliente" onclick='addCliente(document.getElementById("clienteInputNombre").value, document.getElementById("clienteInputTelefono").value)'>Añadir Cliente</button>
+				<button id="btnAddCliente" class="btnCliente">Añadir Cliente</button>
 				<div id="añadirCliente">
 					<input id="clienteInputNombre" value="" type="text" placeholder="Nombre Apellidos">
 					<input id="clienteInputTelefono" value="" type="text" placeholder="Telefono">
@@ -141,7 +142,7 @@
 						    </div>
 						 </div>
 						 <div id="menuItemsCobrosPagos">
-						 	<button class="btnFeo" type="button" onclick='movimiento(document.getElementById("precio").value, document.getElementById("unidades").value, document.getElementById("mes").value, document.getElementById("mov").value)'>Finalizar Movimiento</button>
+						 	<button id="btnFeo" class="btnFeo" type="button">Finalizar Movimiento</button>
 						 </div>
 					</form>
 				</div>
@@ -195,7 +196,7 @@
 			  						
 					</form>
 					<div id="divBtnAddProducto" >
-							<button class="btn btn-primary" onclick='addEmpresaYProducto("tablaInfo", "tablaProductos")'>Añadir Producto</button>	
+							<button id="btnEmpresaYProducto" class="btn btn-primary">Añadir Producto</button>	
 					</div> 
 					
 			  				
