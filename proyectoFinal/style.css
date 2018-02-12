@@ -211,7 +211,7 @@ footer {
   bottom: 0px;
   padding-right: 5px;
   //border: 3px solid blue;
-  z-index: -5;
+  z-index: 3;
 }
 #btnAddProduct {
   width: 20%;
@@ -238,9 +238,15 @@ footer {
   width: 100%;
   display: flex;
   //border: 2px solid red;
-  margin-top: 10px;
+  margin-top: 35px;
 }
 
+#divBtnAddEmpresa{
+  width: 150px;
+  float: right;
+  padding-right: 10px;
+  padding-top: 10px;
+}
 
 #divBtnAddProducto{
   width: 150px;
@@ -260,7 +266,6 @@ table {
 
 td {
   width: 50%;
-  border: 1px solid green;
 }
 
 #tablaProductos {
@@ -273,4 +278,12 @@ td {
 
 #tablaTotal tr th {
   width: 50%;
+}
+
+#clienteInputNombre:valid, #clienteInputTelefono:valid {
+  border: 1.1px solid green;
+}     
+
+#clienteInputNombre:invalid, #clienteInputTelefono:invalid {
+  border: 1.1px solid red;
 }

@@ -25,17 +25,24 @@ $(window).on("load", function() {
 		activarBoton("btnFacturacion");
 	});
 	$("#guardarEmpresa").on("click", function() {
-		guardarEmpresa(document.getElementById("nombreEmpresa").value + " " + document.getElementById("telefono").value + " " + document.getElementById("ciudad").value + " " + document.getElementById("calle").value + " " + document.getElementById("numero").value + " " + document.getElementById("codigoPostal").value);
+		validarEmpresa();
 	});
 	$("#btnAddCliente").on("click", function() {
 		addCliente(document.getElementById("clienteInputNombre").value, document.getElementById("clienteInputTelefono").value);
 	});
-	$("#btnFeo").on("click", function() {
-		movimiento(document.getElementById("precio").value, document.getElementById("unidades").value, document.getElementById("mes").value, document.getElementById("mov").value);
+	$("#btnValidarCobrosPagos").on("click", function() {
+		if(validarCobrosPagos()) movimiento(document.getElementById("precio").value, document.getElementById("unidades").value, document.getElementById("mes").value, document.getElementById("mov").value);
 	});
 	$("#btnEmpresaYProducto").on("click", function() {
 		addEmpresaYProducto("tablaInfo", "tablaProductos");
 	});
+	$("#btnBorrarFactura").on("click", function() {
+		borrarFactura();
+	});
+
+
+
+
 
 });
 //boton activo de otro css
@@ -382,33 +389,43 @@ function addEmpresa(idTable) {
 function addProducto(idTable) {
 	var producto = document.getElementById("Producto").value;
 	var precio = document.getElementById("Precio").value;
-	var newTdProducto = document.createElement("td");
-	newTdProducto.appendChild(document.createTextNode(producto));
-	var newTdPrecio = document.createElement("td");
-	newTdPrecio.appendChild(document.createTextNode(precio));
-	var tr = document.createElement("tr");
-	var boton = document.createElement("button");
-	boton.onclick = function() {borrarTr(this)};
-	boton.innerHTML= "X";
-	tr.appendChild(newTdProducto);
-	tr.appendChild(newTdPrecio);
-	tr.appendChild(boton);
-	var tBody = document.getElementById(idTable).childNodes[1];
-	tBody.appendChild(tr);
-	precioFactura += (+precio);
-	actualizarPrecio();
+	if(precio != "" && producto != "") {
+		var newTdProducto = document.createElement("td");
+		newTdProducto.appendChild(document.createTextNode(producto));
+		var newTdPrecio = document.createElement("td");
+		newTdPrecio.appendChild(document.createTextNode(precio));
+		var tr = document.createElement("tr");
+		var boton = document.createElement("button");
+		boton.onclick = function() {borrarTr(this)};
+		boton.innerHTML= "X";
+		tr.appendChild(newTdProducto);
+		tr.appendChild(newTdPrecio);
+		tr.appendChild(boton);
+		var tBody = document.getElementById(idTable).childNodes[1];
+		tBody.appendChild(tr);
+		precioFactura += (+precio);		actualizarPrecio();
+	}
+	else {
+		alert("Necesitas un nombre de producto y un precio para añadir un producto nuevo");
+	}
 
 }
 
 function borrarTr(btn) {
 	var tr = btn.parentNode;
 	var precio = tr.childNodes[1];
-	console.log(tr);
-	console.log(precio.childNodes[0].textContent);
 	precioFactura -= (+precio.childNodes[0].textContent);
-	console.log(precioFactura);
 	tr.parentNode.removeChild(tr);
 	actualizarPrecio();
+
+}
+function borrarFactura() {
+	document.getElementById("tablaInfo").childNodes[1].innerHTML="<tbody><tr> <td id='facturacionNombreEmpresa'>Nombre Emp</td> <td id='facturacionNIF'>NIF</td> </tr> <tr> <td id='facutracionDireccion'>Direccion</td> <td id='facturacionCliente'>Cliente</td> </tr> </tbody>";
+	document.getElementById("tablaProductos").childNodes[1].innerHTML="<tbody><tr><th>Nombre Producto</th><th>Precio</th></tr></tbody>";
+	precioFactura = 0;
+	actualizarPrecio();
+
+
 
 }
 
@@ -418,6 +435,40 @@ function addEmpresaYProducto(idTableInfo, idTableProductos) {
 }
 
 function actualizarPrecio() {
-	document.getElementById("tdPrecioTotal").innerHTML = "Precio Total : " + precioFactura;
+	var precision = 2;
+	var i = precioFactura;
+	while(i >= 1) {
+		i = i/10;
+		precision = precision + 1;
+	}
+	var preu = precioFactura.toPrecision(precision);
+	if (preu < 0.01) preu = 0;
+	document.getElementById("tdPrecioTotal").innerHTML = "Precio Total : " + preu;
 }
 
+
+
+
+///// validaiton script
+
+function validarEmpresa() {
+	if (document.getElementById("nombreEmpresa").value == "") alert("Por favor, introduzca un nombre de empresa");
+	else if (document.getElementById("telefono").value == "") alert("Por favor, introduzca un número de teléfono");
+	else if (document.getElementById("ciudad").value == "") alert("Por favor, introduzca un nombre de una ciudad");
+	else if (document.getElementById("calle").value == "") alert("Por favor, introduzca un nombre de una calle");
+	else if (document.getElementById("numero").value == "") alert("Por favor, introduzca un número de calle");
+	else if (document.getElementById("codigoPostal").value == "") alert("Por favor, introduzca CP");
+}
+
+
+function validarCobrosPagos() {
+	console.log("erer");
+	if (document.getElementById("unidades").value == "") {
+		alert("Por favor, introduzca el número de unidades"); return false;
+	}
+	else if (document.getElementById("precio").value == "") {
+		alert("Por favor, introduzca un precio");
+		return false;
+	}
+	return true;
+}
